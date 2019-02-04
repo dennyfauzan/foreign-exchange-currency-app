@@ -21,17 +21,74 @@
           </v-layout>
         </v-card-title>
         <v-divider></v-divider>
-        <slot></slot>
+
+        <!-- CurrencyBox -->
+        <currency-box
+          v-for="(box, i) in detailCurrency"
+          :key="`${box}${i}`"
+          :detail="detailCurrency[i]"
+          @removeSelectedCurrency="removeCurrency($event)"
+        >
+        </currency-box>
+
+        <v-flex xs12 class="mx-auto px-3 pt-3 mt-3">
+          <v-layout row wrap class="px-2 py-3">
+            <v-flex xs12>
+              <v-select
+              :items="countryCurrency"
+              v-model="selectedCurrency"
+              label="Select"
+              multiple
+              chips
+              hint="What are the target regions"
+              persistent-hint>
+              </v-select>
+            </v-flex>
+          </v-layout>
+        </v-flex>
       </v-card>
     </v-flex>
 </template>
 
 <script>
+import currencyBox from '@/components/CurrencyBox.vue';
+
 export default {
+  components: {
+    currencyBox,
+  },
   data() {
     return {
       amount: 10,
+      selectedCurrency: [],
     };
+  },
+  props: {
+    currencyRates: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  methods: {
+    removeCurrency(val) {
+      const result = this.selectedCurrency.filter(el => el !== val);
+      this.selectedCurrency = result;
+    },
+  },
+  computed: {
+    countryCurrency() {
+      return Object.keys(this.currencyRates).sort();
+    },
+    detailCurrency() {
+      return this.selectedCurrency.map((rateDetail, i) => (
+        {
+          perUsd: this.currencyRates[rateDetail],
+          currency: rateDetail,
+          totalAmount: (this.amount * (this.currencyRates[rateDetail])),
+          id: (i + 1),
+        }
+      ));
+    },
   },
 };
 </script>

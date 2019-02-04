@@ -11,7 +11,9 @@
               <h4 class="title text-xs-right">{{ detail.totalAmount | currency('') }}</h4>
             </v-flex>
             <v-flex xs12>
-              <p class="subheading text-weight-bold xs-12 my-2">IDR - Indonesian Rupiah</p>
+              <p class="subheading text-weight-bold xs-12 my-2">
+                {{ detail.currency }} - {{ currencyName }}
+              </p>
             </v-flex>
             <v-flex>
               <p class="mb-0">1 USD = {{ detail.currency }} {{ detail.perUsd | currency('') }}</p>
@@ -33,11 +35,18 @@
 </template>
 
 <script>
+import { currencies } from 'country-data';
+
 export default {
   name: 'currencyBox',
   methods: {
     removeBox(id) {
       this.$emit('removeSelectedCurrency', id);
+    },
+  },
+  computed: {
+    currencyName() {
+      return currencies[this.detail.currency].name;
     },
   },
   props: {

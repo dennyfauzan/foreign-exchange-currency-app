@@ -9,8 +9,9 @@ const { foreignExchange } = axios;
 
 describe('CurrencyContainer.vue', () => {
   let wrapper;
+  Vue.use(Vuetify);
+  
   beforeEach(() => {
-    Vue.use(Vuetify);
     wrapper = shallowMount(CurrencyContainer);
   });
 

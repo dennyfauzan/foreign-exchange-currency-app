@@ -11,7 +11,7 @@
             </v-flex>
             <v-flex xs6>
               <v-text-field
-                class="headline font-weight-bold mt-0 pt-0 pl-4 text-xs-right"
+                class="input-number headline font-weight-bold mt-0 pt-0 pl-4 text-xs-right"
                 type="number"
                 name="amount"
                 prepend-icon="attach_money"
@@ -54,6 +54,7 @@
 import currencyBox from '@/components/CurrencyBox.vue';
 
 export default {
+  name: 'CurrencyContainer',
   components: {
     currencyBox,
   },
@@ -77,7 +78,7 @@ export default {
   },
   computed: {
     countryCurrency() {
-      return Object.keys(this.currencyRates).sort();
+      return this.currencyRates ? Object.keys(this.currencyRates).sort() : [];
     },
     detailCurrency() {
       return this.selectedCurrency.map((rateDetail, i) => (

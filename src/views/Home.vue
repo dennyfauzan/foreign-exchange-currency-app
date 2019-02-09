@@ -8,26 +8,23 @@
 
 <script>
 import CurrencyContainer from '@/components/CurrencyContainer.vue';
-import axios from '@/../axios-instance';
-
-const { foreignExchange } = axios;
+import { mapState } from 'vuex';
 
 export default {
   name: 'Home',
-  data() {
-    return {
-      rates: {},
-    };
+  computed: {
+    ...mapState({
+      currencyRates: state => state.currencyRates,
+    }),
+    rates() {
+      return this.currencyRates.rates ? this.currencyRates.rates : {};
+    },
   },
   components: {
     CurrencyContainer,
   },
   created() {
-    foreignExchange.get('/latest?base=USD')
-      .then((response) => {
-        const { rates } = response.data;
-        this.rates = rates;
-      });
+    this.$store.dispatch('getCurrencyRates');
   },
 };
 </script>

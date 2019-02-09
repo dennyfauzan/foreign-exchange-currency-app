@@ -1,5 +1,5 @@
 <template>
-  <v-flex xs12 class="mx-auto px-3 pt-3">
+  <v-flex xs12 class="mx-auto px-3 pt-3" :class="detail.currency">
     <v-card>
       <v-layout row wrap class="px-2 py-3">
         <v-flex xs11>

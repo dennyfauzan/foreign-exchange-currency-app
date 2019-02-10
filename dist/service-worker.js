@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/foreign-exchange-currency-app/precache-manifest.e0eaf1ef2cc6f7d9611aaf590a96445f.js"
+  "/precache-manifest.78268af16c08f432a57382763aa96b68.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "foreign_exchange_currency"});

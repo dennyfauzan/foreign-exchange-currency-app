@@ -10,6 +10,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
+      title: 'Foreign Exchange Currency',
       component: () => import('./views/Home.vue'),
     },
     {

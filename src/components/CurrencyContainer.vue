@@ -40,7 +40,7 @@
               label="Select"
               multiple
               chips
-              hint="What are the target regions"
+              hint="Which country currency"
               persistent-hint>
               </v-select>
             </v-flex>

@@ -1,5 +1,19 @@
 # foreign_exchange_currency
 
+## Production url :
+```
+https://foreign-exchange-currency.netlify.com/
+```
+## If you have Docker installed in your machine :
+#### Build image from dockerfile :
+```
+docker image build -t [REPONAME] .
+```
+#### Run container after image build :
+```
+docker run -it -p 8080:80 --rm --name [CONTAINER_NAME] [REPOSITORY]
+```
+
 ## Project setup
 ```
 npm install

@@ -4,14 +4,21 @@
 ```
 https://foreign-exchange-currency.netlify.com/
 ```
+
 ## If you have Docker installed in your machine :
-#### Build image from dockerfile :
+#### Go to root project and build image from dockerfile :
 ```
-docker image build -t [REPONAME] .
+docker image build -t foreign-exchange-app .
 ```
+
 #### Run container after image build :
 ```
-docker run -it -p 8080:80 --rm --name [CONTAINER_NAME] [REPOSITORY]
+docker run -it -p 8080:80 --rm --name foreign-exchange-currency foreign-exchange-app
+```
+
+#### After command above executed, open your browser and go to :
+```
+http://localhost:8080/
 ```
 
 ## Project setup
